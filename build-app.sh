@@ -9,14 +9,14 @@ function _in_container_task() {
     scl enable rh-python38 "pipenv install --dev"
     scl enable rh-python38 "pipenv run pyinstaller --onefile app.py"
     mv dist/app data/app
-    rm -rf build app.spec
+    rm -rf build app.spec dist
 }
 
 cd "$(dirname "$0")"
 
 if [[ -z ${1+x} ]]; then
+    mkdir -p data
     docker run -v "$PWD":/data --rm -it oraclelinux:7 /data/build-app.sh _in_container_task
-    rm -rf app.spec
 else
     "$@"
 fi
