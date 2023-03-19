@@ -6,7 +6,6 @@ name = "pypi"
 [packages]
 uvloop = "==0.15.2"
 aiohttp = {extras = ["speedups"], version = "*"}
-aws-request-signer = "*"
 
 [dev-packages]
 pyinstaller = "*"
